@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, Trophy, LogIn, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, signOut } = useAuth();
 
   const navItems = [
     { label: "Torneios", href: "#tournaments" },
@@ -58,19 +59,23 @@ export const Header = () => {
                   <User className="mr-2 h-4 w-4" />
                   {user?.email}
                 </Button>
-                <Button variant="neon" size="sm" onClick={logout}>
+                <Button variant="neon" size="sm" onClick={signOut}>
                   Sair
                 </Button>
               </>
             ) : (
               <>
-                <Button variant="ghost" size="sm">
-                  Entrar
-                </Button>
-                <Button variant="hero" size="sm">
-                  <LogIn className="mr-2 h-4 w-4" />
-                  Cadastrar
-                </Button>
+                <Link to="/auth">
+                  <Button variant="ghost" size="sm">
+                    Entrar
+                  </Button>
+                </Link>
+                <Link to="/auth">
+                  <Button variant="hero" size="sm">
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Cadastrar
+                  </Button>
+                </Link>
               </>
             )}
           </div>
@@ -111,19 +116,23 @@ export const Header = () => {
                     <User className="mr-2 h-4 w-4" />
                     {user?.email}
                   </Button>
-                  <Button variant="neon" size="sm" onClick={logout}>
+                  <Button variant="neon" size="sm" onClick={signOut}>
                     Sair
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="ghost" size="sm">
-                    Entrar
-                  </Button>
-                  <Button variant="hero" size="sm">
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Cadastrar
-                  </Button>
+                  <Link to="/auth">
+                    <Button variant="ghost" size="sm" className="w-full">
+                      Entrar
+                    </Button>
+                  </Link>
+                  <Link to="/auth">
+                    <Button variant="hero" size="sm" className="w-full">
+                      <LogIn className="mr-2 h-4 w-4" />
+                      Cadastrar
+                    </Button>
+                  </Link>
                 </>
               )}
             </div>

@@ -1,17 +1,15 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
-
-interface User {
-  id: string;
-  email: string;
-  name?: string;
-}
+import { supabase } from "@/integrations/supabase/client";
+import { User, Session } from "@supabase/supabase-js";
 
 interface AuthContextType {
   user: User | null;
+  session: Session | null;
   loading: boolean;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
+  signUp: (email: string, password: string, displayName?: string) => Promise<{ error: any }>;
+  signIn: (email: string, password: string) => Promise<{ error: any }>;
+  signOut: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -22,60 +20,67 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simular verificação de sessão
-    const checkSession = async () => {
-      try {
-        // TODO: Integrar com Manus OAuth ou Supabase Auth
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-          setUser(JSON.parse(storedUser));
-        }
-      } catch (error) {
-        console.error("Erro ao verificar sessão:", error);
-      } finally {
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
         setLoading(false);
       }
-    };
+    );
 
-    checkSession();
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  const login = async (email: string, password: string) => {
-    try {
-      // TODO: Implementar login real com Manus OAuth ou Supabase
-      setLoading(true);
-      
-      // Simulação de login
-      const mockUser: User = {
-        id: "1",
-        email,
-        name: email.split("@")[0],
-      };
-      
-      setUser(mockUser);
-      localStorage.setItem("user", JSON.stringify(mockUser));
-    } catch (error) {
-      console.error("Erro no login:", error);
-      throw error;
-    } finally {
-      setLoading(false);
-    }
+  const signUp = async (email: string, password: string, displayName?: string) => {
+    const redirectUrl = `${window.location.origin}/`;
+    
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: redirectUrl,
+        data: {
+          display_name: displayName || email.split("@")[0],
+        }
+      }
+    });
+    
+    return { error };
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
+  const signIn = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    
+    return { error };
+  };
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
   };
 
   const value: AuthContextType = {
     user,
+    session,
     loading,
     isAuthenticated: !!user,
-    login,
-    logout,
+    signUp,
+    signIn,
+    signOut,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
