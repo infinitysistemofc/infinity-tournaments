@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, Trophy, LogIn, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
 
 export const Header = () => {
@@ -27,21 +25,18 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo & Sidebar Trigger */}
-          <div className="flex items-center gap-3">
-            <SidebarTrigger className="border-glow-blue" />
-            <motion.a
-              href="/"
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Trophy className="h-8 w-8 text-primary animate-glow-blue" />
-              <span className="text-xl font-bold font-orbitron text-gradient-fire-blue">
-                Infinity Tournaments
-              </span>
-            </motion.a>
-          </div>
+          {/* Logo */}
+          <motion.a
+            href="/"
+            className="flex items-center gap-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Trophy className="h-8 w-8 text-primary animate-glow-blue" />
+            <span className="text-xl font-bold font-orbitron text-gradient-fire-blue">
+              Infinity Tournaments
+            </span>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
@@ -56,9 +51,8 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* Auth Buttons & Theme Toggle */}
+          {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
             {isAuthenticated ? (
               <>
                 <Button variant="ghost" size="sm">

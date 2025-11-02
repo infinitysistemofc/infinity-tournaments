@@ -90,36 +90,6 @@ All colors MUST be HSL.
     --sidebar-border: 229 28% 25%;
     --sidebar-ring: 192 100% 50%;
   }
-
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 229 59% 10%;
-    --card: 0 0% 98%;
-    --card-foreground: 229 59% 10%;
-    --popover: 0 0% 98%;
-    --popover-foreground: 229 59% 10%;
-    --primary: 192 100% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 229 28% 90%;
-    --secondary-foreground: 229 59% 10%;
-    --muted: 229 28% 95%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 14 100% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 229 28% 85%;
-    --input: 229 28% 90%;
-    --ring: 192 100% 40%;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 229 59% 10%;
-    --sidebar-primary: 192 100% 40%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 229 59% 10%;
-    --sidebar-border: 229 28% 85%;
-    --sidebar-ring: 192 100% 40%;
-  }
 }
 
 @layer base {

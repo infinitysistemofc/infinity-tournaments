@@ -1,7 +1,1 @@
 project_id = "iloayuxiotgdhisobpjq"
-
-[functions.generate-matches]
-verify_jwt = true
-
-[functions.calculate-tournament-ranking]
-verify_jwt = true
