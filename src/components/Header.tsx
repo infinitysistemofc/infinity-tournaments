@@ -4,16 +4,19 @@ import { motion } from "framer-motion";
 import { Menu, X, Trophy, LogIn, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isAuthenticated, signOut } = useAuth();
+  const { t } = useTranslation();
 
   const navItems = [
-    { label: "Torneios", href: "#tournaments" },
-    { label: "Circuitos", href: "#circuits" },
-    { label: "Comunidade", href: "#community" },
-    { label: "Sobre", href: "#about" },
+    { label: t("common.tournaments"), href: "/tournaments" },
+    { label: t("common.circuits"), href: "/circuits" },
+    { label: t("common.community"), href: "#community" },
+    { label: t("common.about"), href: "#about" },
   ];
 
   return (
@@ -53,6 +56,7 @@ export const Header = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
             {isAuthenticated ? (
               <>
                 <Button variant="ghost" size="sm">
@@ -60,20 +64,20 @@ export const Header = () => {
                   {user?.email}
                 </Button>
                 <Button variant="neon" size="sm" onClick={signOut}>
-                  Sair
+                  {t("common.logout")}
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/auth">
                   <Button variant="ghost" size="sm">
-                    Entrar
+                    {t("common.login")}
                   </Button>
                 </Link>
                 <Link to="/auth">
                   <Button variant="hero" size="sm">
                     <LogIn className="mr-2 h-4 w-4" />
-                    Cadastrar
+                    {t("common.register")}
                   </Button>
                 </Link>
               </>
@@ -110,6 +114,7 @@ export const Header = () => {
               </a>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
+              <LanguageSwitcher />
               {isAuthenticated ? (
                 <>
                   <Button variant="ghost" size="sm">
@@ -117,20 +122,20 @@ export const Header = () => {
                     {user?.email}
                   </Button>
                   <Button variant="neon" size="sm" onClick={signOut}>
-                    Sair
+                    {t("common.logout")}
                   </Button>
                 </>
               ) : (
                 <>
                   <Link to="/auth">
                     <Button variant="ghost" size="sm" className="w-full">
-                      Entrar
+                      {t("common.login")}
                     </Button>
                   </Link>
                   <Link to="/auth">
                     <Button variant="hero" size="sm" className="w-full">
                       <LogIn className="mr-2 h-4 w-4" />
-                      Cadastrar
+                      {t("common.register")}
                     </Button>
                   </Link>
                 </>

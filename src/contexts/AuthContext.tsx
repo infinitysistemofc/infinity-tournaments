@@ -66,6 +66,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       password,
     });
     
+    if (!error) {
+      // Redirect to dashboard after successful login
+      window.location.href = "/dashboard";
+    }
+    
     return { error };
   };
 

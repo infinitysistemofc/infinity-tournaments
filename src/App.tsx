@@ -10,6 +10,10 @@ import Index from "./pages/Index";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import HallOfFameTournament from "./pages/HallOfFameTournament";
+import HallOfFameCircuit from "./pages/HallOfFameCircuit";
+import HallOfFamePlayer from "./pages/HallOfFamePlayer";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +29,10 @@ const App = () => (
                 <Route path="/" element={<Home />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/index" element={<Index />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/tournaments/:tournamentId/hall-of-fame" element={<HallOfFameTournament />} />
+                <Route path="/circuits/:circuitId/hall-of-fame" element={<HallOfFameCircuit />} />
+                <Route path="/players/:playerId/achievements" element={<HallOfFamePlayer />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
