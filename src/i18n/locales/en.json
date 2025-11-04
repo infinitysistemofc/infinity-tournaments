@@ -64,7 +64,8 @@
     "singleElimination": "Single Elimination",
     "doubleElimination": "Double Elimination",
     "roundRobin": "Round Robin",
-    "swiss": "Swiss System"
+    "swiss": "Swiss System",
+    "viewDetails": "View Details"
   },
   "circuits": {
     "title": "Circuits",
@@ -78,7 +79,22 @@
     "wins": "Wins",
     "losses": "Losses",
     "matchesPlayed": "Matches Played",
-    "rank": "Rank"
+    "rank": "Rank",
+    "overview": "Overview",
+    "ranking": "Ranking",
+    "statistics": "Statistics",
+    "winRate": "Win Rate",
+    "progress": "Progress",
+    "position": "Position",
+    "player": "Player",
+    "topPlayers": "Top Players",
+    "upcomingTournaments": "Upcoming Tournaments",
+    "pointsDistribution": "Points Distribution",
+    "winsDistribution": "Wins Distribution",
+    "tournamentsBreakdown": "Circuit Tournaments",
+    "totalParticipants": "Total Participants",
+    "totalMatches": "Total Matches",
+    "avgPoints": "Average Points"
   },
   "dashboard": {
     "welcome": "Welcome to Dashboard",

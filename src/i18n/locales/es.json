@@ -64,7 +64,8 @@
     "singleElimination": "Eliminación Simple",
     "doubleElimination": "Doble Eliminación",
     "roundRobin": "Todos contra Todos",
-    "swiss": "Sistema Suizo"
+    "swiss": "Sistema Suizo",
+    "viewDetails": "Ver Detalles"
   },
   "circuits": {
     "title": "Circuitos",
@@ -78,7 +79,22 @@
     "wins": "Victorias",
     "losses": "Derrotas",
     "matchesPlayed": "Partidas Jugadas",
-    "rank": "Posición"
+    "rank": "Posición",
+    "overview": "Resumen",
+    "ranking": "Ranking",
+    "statistics": "Estadísticas",
+    "winRate": "Tasa de Victoria",
+    "progress": "Progreso",
+    "position": "Posición",
+    "player": "Jugador",
+    "topPlayers": "Mejores Jugadores",
+    "upcomingTournaments": "Próximos Torneos",
+    "pointsDistribution": "Distribución de Puntos",
+    "winsDistribution": "Distribución de Victorias",
+    "tournamentsBreakdown": "Torneos del Circuito",
+    "totalParticipants": "Total de Participantes",
+    "totalMatches": "Total de Partidos",
+    "avgPoints": "Promedio de Puntos"
   },
   "dashboard": {
     "welcome": "Bienvenido al Panel",

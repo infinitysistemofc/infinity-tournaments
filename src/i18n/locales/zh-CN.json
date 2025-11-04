@@ -64,7 +64,8 @@
     "singleElimination": "单淘汰制",
     "doubleElimination": "双淘汰制",
     "roundRobin": "循环赛",
-    "swiss": "瑞士制"
+    "swiss": "瑞士制",
+    "viewDetails": "查看详情"
   },
   "circuits": {
     "title": "赛事",
@@ -78,7 +79,22 @@
     "wins": "胜利",
     "losses": "失败",
     "matchesPlayed": "已比赛场次",
-    "rank": "排名"
+    "rank": "排名",
+    "overview": "概览",
+    "ranking": "排名",
+    "statistics": "统计",
+    "winRate": "胜率",
+    "progress": "进度",
+    "position": "位置",
+    "player": "玩家",
+    "topPlayers": "顶级玩家",
+    "upcomingTournaments": "即将举行的锦标赛",
+    "pointsDistribution": "积分分布",
+    "winsDistribution": "胜利分布",
+    "tournamentsBreakdown": "赛道锦标赛",
+    "totalParticipants": "总参与者",
+    "totalMatches": "总比赛",
+    "avgPoints": "平均积分"
   },
   "dashboard": {
     "welcome": "欢迎来到仪表板",
