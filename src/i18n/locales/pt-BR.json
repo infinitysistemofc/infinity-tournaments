@@ -10,6 +10,10 @@
     "logout": "Sair",
     "login": "Entrar",
     "register": "Cadastrar",
+    "accessDashboard": "Acessar Dashboard",
+    "startNow": "Começar Agora",
+    "viewDemo": "Ver Demo",
+    "createFreeAccount": "Criar Conta Grátis",
     "save": "Salvar",
     "cancel": "Cancelar",
     "delete": "Deletar",
@@ -44,6 +48,9 @@
     "format": "Formato",
     "participants": "Participantes",
     "status": "Status",
+    "noDescription": "Sem descrição",
+    "players": "jogadores",
+    "notFound": "Torneio não encontrado",
     "startDate": "Data de Início",
     "endDate": "Data de Fim",
     "maxParticipants": "Máximo de Participantes",
@@ -65,7 +72,38 @@
     "doubleElimination": "Eliminação Dupla",
     "roundRobin": "Todos contra Todos",
     "swiss": "Sistema Suíço",
-    "viewDetails": "Ver Detalhes"
+    "viewDetails": "Ver Detalhes",
+    "tabs": {
+      "participants": "Participantes",
+      "brackets": "Chaves",
+      "results": "Resultados"
+    },
+    "participantsList": "Lista de Participantes",
+    "unknownPlayer": "Jogador Desconhecido",
+    "participantStatus": {
+      "registered": "Registrado",
+      "confirmed": "Confirmado",
+      "eliminated": "Eliminado",
+      "champion": "Campeão"
+    },
+    "noParticipants": "Nenhum participante ainda",
+    "brackets": "Chaves do Torneio",
+    "player": "Jogador",
+    "winner": "Vencedor",
+    "noBrackets": "Chaves ainda não criadas",
+    "results": "Resultados Finais",
+    "noResults": "Nenhum resultado disponível ainda",
+    "formats": {
+      "single_elimination": "Eliminação Simples",
+      "double_elimination": "Eliminação Dupla",
+      "round_robin": "Todos contra Todos",
+      "swiss": "Sistema Suíço"
+    },
+    "status": {
+      "draft": "Rascunho",
+      "active": "Ativo",
+      "completed": "Finalizado"
+    }
   },
   "circuits": {
     "title": "Circuitos",
@@ -94,7 +132,29 @@
     "tournamentsBreakdown": "Torneios do Circuito",
     "totalParticipants": "Total de Participantes",
     "totalMatches": "Total de Partidas",
-    "avgPoints": "Média de Pontos"
+    "avgPoints": "Média de Pontos",
+    "noDescription": "Sem descrição",
+    "status": {
+      "draft": "Rascunho",
+      "active": "Ativo",
+      "completed": "Finalizado"
+    }
+  },
+  "showcase": {
+    "title": "Vitrine de Competições",
+    "subtitle": "Explore torneios e circuitos em andamento",
+    "description": "Descubra as melhores competições, acompanhe rankings e participe de eventos épicos",
+    "featuredCompetitions": "Competições em Destaque",
+    "viewAll": "Ver Todas",
+    "searchPlaceholder": "Buscar competições...",
+    "filters": {
+      "all": "Todas",
+      "active": "Ativas",
+      "draft": "Rascunho",
+      "completed": "Finalizadas"
+    },
+    "noTournaments": "Nenhum torneio encontrado",
+    "noCircuits": "Nenhum circuito encontrado"
   },
   "dashboard": {
     "welcome": "Bem-vindo ao Dashboard",

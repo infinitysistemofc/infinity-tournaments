@@ -1,10 +1,18 @@
 import { motion } from "framer-motion";
-import { Trophy, Zap, Users, BarChart3, Gamepad2, Award, Target } from "lucide-react";
+import { Trophy, Zap, Users, BarChart3, Gamepad2, Award, Target, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useAuth } from "@/hooks/useAuth";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useTournaments } from "@/hooks/tournaments/useTournaments";
 import heroImage from "@/assets/hero-tournament.jpg";
 
 export const Home = () => {
+  const { isAuthenticated } = useAuth();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { data: featuredTournaments } = useTournaments({ limit: 3, status: "active" });
   const features = [
     {
       icon: Trophy,
@@ -81,14 +89,37 @@ export const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button variant="hero" size="xl" className="animate-glow-fire">
-                <Trophy className="mr-2 h-5 w-5" />
-                Começar Agora
-              </Button>
-              <Button variant="neon" size="xl">
-                <Target className="mr-2 h-5 w-5" />
-                Ver Demo
-              </Button>
+              {isAuthenticated ? (
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  className="animate-glow-fire"
+                  onClick={() => navigate("/dashboard")}
+                >
+                  <Trophy className="mr-2 h-5 w-5" />
+                  {t("common.accessDashboard")}
+                </Button>
+              ) : (
+                <>
+                  <Button 
+                    variant="hero" 
+                    size="xl" 
+                    className="animate-glow-fire"
+                    onClick={() => navigate("/auth")}
+                  >
+                    <Trophy className="mr-2 h-5 w-5" />
+                    {t("common.startNow")}
+                  </Button>
+                  <Button 
+                    variant="neon" 
+                    size="xl"
+                    onClick={() => navigate("/showcase")}
+                  >
+                    <Target className="mr-2 h-5 w-5" />
+                    {t("common.viewDemo")}
+                  </Button>
+                </>
+              )}
             </div>
 
             {/* Stats */}
@@ -177,6 +208,87 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* Featured Competitions Section */}
+      <section className="py-20 relative" id="showcase">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-4 text-gradient-fire-blue">
+              {t("showcase.featuredCompetitions")}
+            </h2>
+            <p className="text-xl text-muted-foreground font-rajdhani">
+              {t("showcase.subtitle")}
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {featuredTournaments?.slice(0, 3).map((tournament, index) => (
+              <motion.div
+                key={tournament.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card 
+                  className="overflow-hidden bg-card border-glow-blue hover:border-glow-fire transition-all duration-300 cursor-pointer group"
+                  onClick={() => navigate(`/tournaments/${tournament.id}`)}
+                >
+                  <div className="aspect-[9/16] bg-gradient-fire relative overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Trophy className="h-20 w-20 text-foreground opacity-20" />
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold">
+                        {t(`tournaments.status.${tournament.status}`)}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-orbitron font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                      {tournament.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-rajdhani mb-4 line-clamp-2">
+                      {tournament.description || t("tournaments.noDescription")}
+                    </p>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">
+                        {new Date(tournament.start_date).toLocaleDateString()}
+                      </span>
+                      <span className="text-primary font-bold">
+                        {tournament.max_participants} {t("tournaments.players")}
+                      </span>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Button 
+              variant="neon" 
+              size="lg"
+              onClick={() => navigate("/showcase")}
+            >
+              {t("showcase.viewAll")}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4">
@@ -195,9 +307,14 @@ export const Home = () => {
               Junte-se a milhares de organizadores que já usam o Infinity Tournaments para
               criar experiências incríveis
             </p>
-            <Button variant="hero" size="xl" className="animate-glow-fire">
+            <Button 
+              variant="hero" 
+              size="xl" 
+              className="animate-glow-fire"
+              onClick={() => navigate(isAuthenticated ? "/dashboard" : "/auth")}
+            >
               <Trophy className="mr-2 h-5 w-5" />
-              Criar Conta Grátis
+              {isAuthenticated ? t("common.accessDashboard") : t("common.createFreeAccount")}
             </Button>
           </motion.div>
         </div>
