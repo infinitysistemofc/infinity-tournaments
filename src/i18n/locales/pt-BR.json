@@ -39,7 +39,10 @@
     "period": "Período",
     "selectPeriod": "Selecione o período",
     "status": "Status",
-    "date": "Data"
+    "date": "Data",
+    "rank": "Ranking",
+    "points": "pontos",
+    "viewAll": "Ver Todos"
   },
   "auth": {
     "signIn": "Entrar",
@@ -171,20 +174,22 @@
   },
   "dashboard": {
     "welcome": "Bem-vindo ao Dashboard",
+    "totalTournaments": "Total de Torneios",
+    "totalWins": "Total de Vitórias",
+    "totalPoints": "Total de Pontos",
+    "achievements": "Conquistas",
     "myTournaments": "Meus Torneios",
     "myCircuits": "Meus Circuitos",
-    "quickStats": "Estatísticas Rápidas",
-    "recentActivity": "Atividade Recente",
     "upcomingEvents": "Próximos Eventos",
-    "viewAll": "Ver Todos",
-    "tournamentsCreated": "Torneios Criados",
-    "totalParticipants": "Total de Participantes",
-    "activeTournaments": "Torneios Ativos",
-    "activeCircuits": "Circuitos Ativos",
-    "noTournaments": "Nenhum torneio criado ainda",
-    "noCircuits": "Nenhum circuito criado ainda",
-    "noActivity": "Nenhuma atividade recente",
-    "noUpcomingEvents": "Nenhum evento próximo"
+    "recentActivity": "Atividade Recente",
+    "noTournaments": "Você ainda não participou de nenhum torneio",
+    "noCircuits": "Você ainda não está em nenhum circuito",
+    "noUpcomingEvents": "Nenhum evento próximo",
+    "noRecentActivity": "Nenhuma atividade recente",
+    "exploreTournaments": "Explorar Torneios",
+    "exploreCircuits": "Explorar Circuitos",
+    "joinedTournament": "Entrou no torneio {{name}}",
+    "unlockedAchievement": "Desbloqueou a conquista {{name}}"
   },
   "hallOfFame": {
     "title": "Hall da Fama",

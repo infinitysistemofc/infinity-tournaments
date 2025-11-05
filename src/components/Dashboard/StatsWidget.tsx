@@ -10,38 +10,35 @@ export const StatsWidget = () => {
   const { user } = useAuth();
 
   const { data: stats } = useQuery({
-    queryKey: ["dashboard-stats", user?.id],
+    queryKey: ["player-stats", user?.id],
     queryFn: async () => {
-      const [tournamentsRes, participantsRes, circuitsRes] = await Promise.all([
-        supabase
-          .from("tournaments")
-          .select("id, status", { count: "exact" })
-          .eq("organizer_id", user?.id || ""),
+      if (!user?.id) return null;
+
+      const [participants, circuitStats, achievements] = await Promise.all([
         supabase
           .from("participants")
-          .select("id", { count: "exact" })
-          .in(
-            "tournament_id",
-            (
-              await supabase
-                .from("tournaments")
-                .select("id")
-                .eq("organizer_id", user?.id || "")
-            ).data?.map((t) => t.id) || []
-          ),
+          .select("*")
+          .eq("user_id", user.id),
         supabase
-          .from("circuits")
-          .select("id, status", { count: "exact" })
-          .eq("organizer_id", user?.id || ""),
+          .from("circuit_stats")
+          .select("total_points, wins")
+          .eq("user_id", user.id),
+        supabase
+          .from("user_achievements")
+          .select("*")
+          .eq("user_id", user.id),
       ]);
 
+      const totalTournaments = participants.data?.length || 0;
+      const totalWins = participants.data?.filter((p) => p.status === "champion").length || 0;
+      const totalPoints = circuitStats.data?.reduce((acc, s) => acc + s.total_points, 0) || 0;
+      const totalAchievements = achievements.data?.length || 0;
+
       return {
-        totalTournaments: tournamentsRes.count || 0,
-        activeTournaments:
-          tournamentsRes.data?.filter((t) => t.status === "active").length || 0,
-        totalParticipants: participantsRes.count || 0,
-        activeCircuits:
-          circuitsRes.data?.filter((c) => c.status === "active").length || 0,
+        totalTournaments,
+        totalWins,
+        totalPoints,
+        totalAchievements,
       };
     },
     enabled: !!user?.id,
@@ -49,47 +46,50 @@ export const StatsWidget = () => {
 
   const statCards = [
     {
-      title: t("dashboard.tournamentsCreated"),
+      title: t("dashboard.totalTournaments"),
       value: stats?.totalTournaments || 0,
       icon: Trophy,
-      color: "text-yellow-500",
+      gradient: "gradient-fire",
     },
     {
-      title: t("dashboard.totalParticipants"),
-      value: stats?.totalParticipants || 0,
-      icon: Users,
-      color: "text-blue-500",
-    },
-    {
-      title: t("dashboard.activeTournaments"),
-      value: stats?.activeTournaments || 0,
-      icon: Activity,
-      color: "text-green-500",
-    },
-    {
-      title: t("dashboard.activeCircuits"),
-      value: stats?.activeCircuits || 0,
+      title: t("dashboard.totalWins"),
+      value: stats?.totalWins || 0,
       icon: Target,
-      color: "text-purple-500",
+      gradient: "gradient-blue",
+    },
+    {
+      title: t("dashboard.totalPoints"),
+      value: stats?.totalPoints || 0,
+      icon: Activity,
+      gradient: "gradient-fire",
+    },
+    {
+      title: t("dashboard.achievements"),
+      value: stats?.totalAchievements || 0,
+      icon: Users,
+      gradient: "gradient-blue",
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {statCards.map((stat) => {
-        const Icon = stat.icon;
-        return (
-          <Card key={stat.title}>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-              <Icon className={`h-4 w-4 ${stat.color}`} />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{stat.value}</div>
-            </CardContent>
-          </Card>
-        );
-      })}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {statCards.map((stat, index) => (
+        <Card key={stat.title} className="border-glow-blue hover:border-glow-fire transition-all duration-300">
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              {stat.title}
+            </CardTitle>
+            <div className={`p-2 rounded-lg ${stat.gradient}`}>
+              <stat.icon className="h-4 w-4 text-foreground" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-orbitron font-bold text-gradient-fire-blue">
+              {stat.value}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 };
