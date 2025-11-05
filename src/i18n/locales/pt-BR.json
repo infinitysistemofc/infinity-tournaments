@@ -26,7 +26,20 @@
     "search": "Buscar",
     "filter": "Filtrar",
     "community": "Comunidade",
-    "about": "Sobre"
+    "about": "Sobre",
+    "position": "{{position}}º",
+    "filters": "Filtros",
+    "clearFilters": "Limpar Filtros",
+    "resultsFound": "{{count}} resultados encontrados",
+    "all": "Todos",
+    "last7Days": "Últimos 7 dias",
+    "last30Days": "Últimos 30 dias",
+    "last90Days": "Últimos 90 dias",
+    "last1Year": "Último ano",
+    "period": "Período",
+    "selectPeriod": "Selecione o período",
+    "status": "Status",
+    "date": "Data"
   },
   "auth": {
     "signIn": "Entrar",
@@ -208,7 +221,17 @@
     "socialLinks": "Redes Sociais",
     "statistics": "Estatísticas",
     "achievements": "Conquistas",
-    "tournamentHistory": "Histórico de Torneios"
+    "tournamentHistory": "Histórico de Torneios",
+    "overview": "Visão Geral",
+    "history": "Histórico",
+    "totalTournaments": "Total de Torneios",
+    "totalWins": "Total de Vitórias",
+    "winRate": "Taxa de Vitória",
+    "totalPoints": "Pontos Totais",
+    "recentTournaments": "Torneios Recentes",
+    "pointsEvolution": "Evolução de Pontos",
+    "winsDistribution": "Distribuição de Vitórias",
+    "noAchievements": "Nenhuma conquista ainda"
   },
   "games": {
     "title": "Jogos",

@@ -22,7 +22,20 @@
     "search": "Search",
     "filter": "Filter",
     "community": "Community",
-    "about": "About"
+    "about": "About",
+    "position": "{{position}}",
+    "filters": "Filters",
+    "clearFilters": "Clear Filters",
+    "resultsFound": "{{count}} results found",
+    "all": "All",
+    "last7Days": "Last 7 days",
+    "last30Days": "Last 30 days",
+    "last90Days": "Last 90 days",
+    "last1Year": "Last year",
+    "period": "Period",
+    "selectPeriod": "Select period",
+    "status": "Status",
+    "date": "Date"
   },
   "auth": {
     "signIn": "Sign In",
@@ -65,7 +78,42 @@
     "doubleElimination": "Double Elimination",
     "roundRobin": "Round Robin",
     "swiss": "Swiss System",
-    "viewDetails": "View Details"
+    "participantStatus": {
+      "registered": "Registered",
+      "confirmed": "Confirmed",
+      "eliminated": "Eliminated",
+      "champion": "Champion"
+    },
+    "viewDetails": "View Details",
+    "tabs": {
+      "participants": "Participants",
+      "brackets": "Brackets",
+      "results": "Results"
+    },
+    "participantsList": "Participants List",
+    "unknownPlayer": "Unknown Player",
+    "noParticipants": "No participants yet",
+    "brackets": "Tournament Brackets",
+    "player": "Player",
+    "winner": "Winner",
+    "noBrackets": "Brackets not created yet",
+    "results": "Final Results",
+    "noResults": "No results available yet",
+    "formats": {
+      "single_elimination": "Single Elimination",
+      "double_elimination": "Double Elimination",
+      "round_robin": "Round Robin",
+      "swiss": "Swiss System"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed"
+    },
+    "noDescription": "No description",
+    "players": "players",
+    "notFound": "Tournament not found",
+    "seed": "Seed"
   },
   "circuits": {
     "title": "Circuits",
@@ -94,7 +142,29 @@
     "tournamentsBreakdown": "Circuit Tournaments",
     "totalParticipants": "Total Participants",
     "totalMatches": "Total Matches",
-    "avgPoints": "Average Points"
+    "avgPoints": "Average Points",
+    "noDescription": "No description",
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed"
+    }
+  },
+  "showcase": {
+    "title": "Competitions Showcase",
+    "subtitle": "Explore ongoing tournaments and circuits",
+    "description": "Discover the best competitions, follow rankings and participate in epic events",
+    "featuredCompetitions": "Featured Competitions",
+    "viewAll": "View All",
+    "searchPlaceholder": "Search competitions...",
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "draft": "Draft",
+      "completed": "Completed"
+    },
+    "noTournaments": "No tournaments found",
+    "noCircuits": "No circuits found"
   },
   "dashboard": {
     "welcome": "Welcome to Dashboard",
@@ -148,7 +218,17 @@
     "socialLinks": "Social Links",
     "statistics": "Statistics",
     "achievements": "Achievements",
-    "tournamentHistory": "Tournament History"
+    "tournamentHistory": "Tournament History",
+    "overview": "Overview",
+    "history": "History",
+    "totalTournaments": "Total Tournaments",
+    "totalWins": "Total Wins",
+    "winRate": "Win Rate",
+    "totalPoints": "Total Points",
+    "recentTournaments": "Recent Tournaments",
+    "pointsEvolution": "Points Evolution",
+    "winsDistribution": "Wins Distribution",
+    "noAchievements": "No achievements yet"
   },
   "games": {
     "title": "Games",
