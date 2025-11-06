@@ -21,6 +21,9 @@ import Games from "./pages/Games";
 import Profile from "./pages/Profile";
 import Showcase from "./pages/Showcase";
 import TournamentDetails from "./pages/TournamentDetails";
+import CreateTournament from "./pages/CreateTournament";
+import CreateCircuit from "./pages/CreateCircuit";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -39,8 +42,24 @@ const App = () => (
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/tournaments" element={<Tournaments />} />
                 <Route path="/tournaments/:tournamentId" element={<TournamentDetails />} />
+                <Route 
+                  path="/tournaments/create" 
+                  element={
+                    <ProtectedRoute requiredRole="organizer">
+                      <CreateTournament />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="/tournaments/:tournamentId/hall-of-fame" element={<HallOfFameTournament />} />
                 <Route path="/circuits" element={<Circuits />} />
+                <Route 
+                  path="/circuits/create" 
+                  element={
+                    <ProtectedRoute requiredRole="organizer">
+                      <CreateCircuit />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="/circuits/:circuitId" element={<CircuitDetails />} />
                 <Route path="/circuits/:circuitId/hall-of-fame" element={<HallOfFameCircuit />} />
                 <Route path="/games" element={<Games />} />
